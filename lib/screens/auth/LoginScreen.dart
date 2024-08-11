@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_with_firebase/controller/loginController.dart';
 import 'package:flutter_with_firebase/controller/signupcontroller.dart';
-import 'package:flutter_with_firebase/screens/auth/LoginScreen.dart';
 import 'package:flutter_with_firebase/screens/auth/Widgets/MyButton.dart';
 import 'package:flutter_with_firebase/screens/auth/Widgets/TextField.dart';
+import 'package:flutter_with_firebase/screens/auth/signup_screen.dart';
 import 'package:get/get.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Signupcontroller signupcontroller = Get.put(Signupcontroller());
+    Logincontroller logincontroller = Get.put(Logincontroller());
     return Scaffold(
       appBar: AppBar(
-        title: Text("SignUp",style: TextStyle(color: Colors.white),),
+        title: Text("Login",style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
@@ -37,7 +38,7 @@ class SignupScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Create Your Account",
+                    "Login Your Account",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -47,36 +48,33 @@ class SignupScreen extends StatelessWidget {
               children: [
                 MyTextField(
                   hint: "Email",
-                  controller: signupcontroller.emailcontroller,
+                  controller: logincontroller.emailcontroller,
                   iconData: Icons.person,
                 ),
                 MyTextField(
                   hint: "pass",
-                  controller: signupcontroller.passcontroller,
+                  controller: logincontroller.passcontroller,
                   iconData: Icons.password,
                 ),
-                MyTextField(
-                  hint: "Address",
-                  controller: signupcontroller.addresscontroller,
-                  iconData: Icons.home,
-                )
+            
               ],
             ),
             Mybutton(
               onpress: () {
-                signupcontroller.SignUp();
+                logincontroller.Login();
               },
-              btnName: "SignUp",
+              btnName: "Login",
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Text("Already Have an account?"),
+              Text("Not Have an account?"),
               SizedBox(width: 8,),
-              InkWell(onTap: () {
-                Get.to(LoginScreen(),transition: Transition.fade);
-              },
-                child: Text("Login",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
+              InkWell(
+                onTap: () {
+                  Get.to(SignupScreen(),);
+                },
+                child: Text("SignUp",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
             ],)
           ],
         ),
