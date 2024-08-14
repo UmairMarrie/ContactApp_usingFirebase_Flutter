@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_firebase/firebase_options.dart';
-import 'package:flutter_with_firebase/screens/auth/signup_screen.dart';
+import 'package:flutter_with_firebase/screens/AddContact.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       builder: FToastBuilder(),
       debugShowCheckedModeBanner: false,
-      home: SignupScreen(),
+      home: Addcontact(),
     );
   }
 }
